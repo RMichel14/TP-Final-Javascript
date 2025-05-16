@@ -23,9 +23,9 @@ function compareData(table, i, filter) {
     if (i == 0)   return;
     filter.toString();
 
-    if (table[i][filter] < table[i-1][filter]) {   // Si l'élément est plus petit que le précédent...
+    while (table[i][filter] < table[i-1][filter]) {   // Si l'élément est plus petit que le précédent...
         [table[i], table[i-1]]   =   [table[i-1], table[i]];   // ... on inverse les 2
 
-        compareData(table, i-1, filter);  // Et on revient en arrière dans le tableau jusqu'à avoir remis l'élément à sa place
+        i--;  // Et on revient en arrière dans le tableau jusqu'à avoir remis l'élément à sa place
     }
 }

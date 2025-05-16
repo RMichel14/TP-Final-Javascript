@@ -3,7 +3,7 @@
  * @param donneesBrutes Database of Museum
  * @return map
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function transformationDatabase(donneesBrutes) {
     return donneesBrutes.map(item => ({
@@ -27,7 +27,7 @@ function transformationDatabase(donneesBrutes) {
  * Function for loading table of Musee in HTML.
  * @param data Database of museum
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function renderTable(data) {
     const tableBody = document.getElementById("museeTable");

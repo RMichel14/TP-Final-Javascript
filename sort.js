@@ -1,8 +1,9 @@
 /**
  * Trie un tableau selon une colonne dans l'ordre crooissant
- * @param table   Tableau à trier
- * @param filter   Colonne selon laquelle trier le tableau
+ * @param {Array} table   Tableau à trier
+ * @param {string} filter   Colonne selon laquelle trier le tableau
  * @author Bastien POMMIER
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function sortTable(table, filter) {
     table.forEach((object, id) => {   // "object" n'est pas utile, on utilise juste l'index
@@ -14,10 +15,11 @@ function sortTable(table, filter) {
 
 /**
  * Compare deux lignes successives d'un tableau, puis les trie dans l'ordre croissant
- * @param table   Tableau contenant les données (objets)
- * @param i   Indice de la 2e ligne
- * @param filter   Colonne selon laquelle trier le tableau
+ * @param {Array} table   Tableau contenant les données (objets)
+ * @param {int} i   Indice de la 2e ligne
+ * @param {string} filter   Colonne selon laquelle trier le tableau
  * @author Bastien POMMIER
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function compareData(table, i, filter) {
     if (i == 0)   return;
@@ -33,6 +35,15 @@ function compareData(table, i, filter) {
 
 
 
+/**
+ * Crée un nouveau tableau avec moins d'éléments, qui dépendent du filtre et de la valeur donnés
+ * @param {Array} table   Tableau source (objets)
+ * @param {string} filter   Colonne sur laquelle appliqur le filtre
+ * @param {*} value   Donnée à conserver après le filtre
+ * @returns {Array}   Retourne le tableau créé
+ * @author Bastien POMMIER
+ * @copyright ISEN-CAEN CIR1 - 2025
+ */
 function filterTable(table, filter, value) {
     return table.filter(item => {
         return item[filter] == value;

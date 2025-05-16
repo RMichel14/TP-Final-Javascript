@@ -1,5 +1,5 @@
 /**
- * @description   Trie un tableau selon une colonne dans l'ordre crooissant
+ * Trie un tableau selon une colonne dans l'ordre crooissant
  * @param table   Tableau à trier
  * @param filter   Colonne selon laquelle trier le tableau
  * @author Bastien POMMIER
@@ -13,9 +13,9 @@ function sortTable(table, filter) {
 
 
 /**
- * @description   Compare deux lignes successives d'un tableau, puis les trie dans l'ordre croissant
+ * Compare deux lignes successives d'un tableau, puis les trie dans l'ordre croissant
  * @param table   Tableau contenant les données (objets)
- * @param i   Indice de la 2e lignes
+ * @param i   Indice de la 2e ligne
  * @param filter   Colonne selon laquelle trier le tableau
  * @author Bastien POMMIER
  */
@@ -27,4 +27,14 @@ function compareData(table, i, filter) {
 
         if (--i <= 0)   return;  // Et on revient en arrière dans le tableau jusqu'à avoir remis l'élément à sa place
     }
+}
+
+
+
+
+
+function filterTable(table, filter, value) {
+    return table.filter(item => {
+        return item[filter] == value;
+    });
 }

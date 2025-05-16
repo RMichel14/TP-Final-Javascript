@@ -38,8 +38,6 @@ function renderTable(data) {
     if (data.length == 0)
         tableBody.innerHTML = `<tr><td colspan="11">Aucun musée trouvé.</td></tr>`;
     else {
-        sortTable(data, "annee");
-
         data.forEach(element => {
             const row = document.createElement("tr");
             row.innerHTML = `

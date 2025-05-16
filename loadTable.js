@@ -1,7 +1,7 @@
 /**
  * Function for utilisation of database
- * @param donneesBrutes Database of Museum
- * @return map
+ * @param {Array} donneesBrutes Database of Museum
+ * @return {Array} map
  * @author Raphaël MICHEL
  * @copyright ISEN-CAEN CIR1 - 2025
  */
@@ -25,7 +25,7 @@ function transformationDatabase(donneesBrutes) {
 
 /**
  * Function for loading table of Musee in HTML.
- * @param data Database of museum
+ * @param {Array} data Database of museum
  * @author Raphaël MICHEL
  * @copyright ISEN-CAEN CIR1 - 2025
  */
@@ -38,8 +38,6 @@ function renderTable(data) {
     if (data.length == 0)
         tableBody.innerHTML = `<tr><td colspan="11">Aucun musée trouvé.</td></tr>`;
     else {
-        sortTable(data, "annee");
-
         data.forEach(element => {
             const row = document.createElement("tr");
             row.innerHTML = `

@@ -9,6 +9,8 @@ function sortTable(table, filter) {
     table.forEach((object, id) => {   // "object" n'est pas utile, on utilise juste l'index
         compareData(table, id, filter);
     });
+
+    renderTable(table);
 }
 
 

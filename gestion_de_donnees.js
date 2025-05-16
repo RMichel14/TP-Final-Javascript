@@ -1,5 +1,5 @@
 function main() {
     const donneesMusees = transformationDatabase(data);
-    loadTable(donneesMusees);
+    renderTable(donneesMusees);
 }
 main()

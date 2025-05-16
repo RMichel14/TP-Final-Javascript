@@ -1,5 +1,8 @@
 function main() {
     const donneesMusees = transformationDatabase(data);
-    renderTable(donneesMusees);
+    let donneesMuseesTrie = donneesMusees;
+    sortTable(donneesMuseesTrie, "annee");
+    renderTable(donneesMuseesTrie);
 }
+
 main()

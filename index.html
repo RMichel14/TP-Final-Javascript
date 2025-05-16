@@ -5,11 +5,76 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fréquentation des musées de France</title>
-    <link href="" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Go to your console !</h1>
+    <h1>Liste des Musées</h1>
+
+    <!-- Barre de recherche -->
+    <input type="text" id="searchInput" placeholder="Rechercher un musée..." />
+
+    <!-- Filtres dynamiques -->
+    <div id="filters">
+        <select id="regionFilter">
+            <option value="">-- Région --</option>
+        </select>
+        <select id="villeFilter">
+            <option value="">-- Ville --</option>
+        </select>
+        <select id="departementFilter">
+            <option value="">-- Département --</option>
+        </select>
+        <select id="anneeFilter">
+            <option value="">-- Année --</option>
+        </select>
+        <select id="dateAppellationFilter">
+            <option value="">-- Date Appellation --</option>
+        </select>
+        <select id="noteFilter">
+            <option value="">-- Note --</option>
+        </select>
+        <select id="payantFilter">
+            <option value="">-- Gratuité --</option>
+            <option value="payant">Payant</option>
+            <option value="gratuit">Gratuit</option>
+        </select>
+        <select id="sortBy">
+            <option value="">-- Trier par --</option>
+            <option value="nom">Nom</option>
+            <option value="annee">Année</option>
+            <option value="region">Région</option>
+            <option value="ville">Ville</option>
+            <option value="dateAppellation">Date Appellation</option>
+            <option value="total">Total</option>
+            <option value="note">Note</option>
+            <option value="departement">Département</option>
+        </select>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du Musée</th>
+                    <th>Année</th>
+                    <th>Région</th>
+                    <th>Ville</th>
+                    <th>Date de l'Appellation</th>
+                    <th>Payant</th>
+                    <th>Gratuit</th>
+                    <th>Total</th>
+                    <th>Note</th>
+                    <th>Département</th>
+                    <th>Observations</th>
+                </tr>
+            </thead>
+            <tbody id="museeTable">
+                <!-- Les données sont insérées dynamiquement -->
+            </tbody>
+        </table>
+    </div>
+
     <script src="data.js"></script>
     <script src="gestion_de_donnees.js"></script>
 </body>

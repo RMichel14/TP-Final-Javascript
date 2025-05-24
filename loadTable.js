@@ -1,15 +1,3 @@
-const filters = {
-    search: document.getElementById("searchInput"),
-    region: document.getElementById("regionFilter"),
-    ville: document.getElementById("villeFilter"),
-    departement: document.getElementById("departementFilter"),
-    tarif: document.getElementById("payantFilter"),
-    sortBy: document.getElementById("sortBy"),
-    annee: document.getElementById("anneeFilter"),
-    dateAppellation: document.getElementById("dateAppellationFilter"),
-    note: document.getElementById("noteFilter"),
-};
-
 const paginationContainer = document.getElementById("pagination");
 
 

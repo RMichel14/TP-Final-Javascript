@@ -1,9 +1,11 @@
 function main() {
     const donneesMusees = transformationDatabase(data);
-    // let donneesTriees = filterTable(donneesMusees, "region", "BASSE-NORMANDIE");
+    let donneesMuseesTrie = donneesMusees;
+    sortTable(donneesMuseesTrie, "annee");
+    remplirFiltresDynamique(donneesMuseesTrie);
+    mettreFiltresEnMajuscule();
+    supprimerDoublonsFiltres();
+    renderTable(donneesMuseesTrie);
+}
 
-    document.getElementById("sortBy").addEventListener("input", e => {
-        let filter = document.getElementById("sortBy").value;
-        sortTable(donneesTriees, filter);
-    });
-} main();
+main()

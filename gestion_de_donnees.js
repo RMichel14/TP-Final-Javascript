@@ -26,12 +26,6 @@ function main() {
     filters.forEach(item => {
         item[0].addEventListener("change", e => {
             donneesFiltrees = applyFilters(donneesMusees);
-
-            remplirFiltresDynamique(donneesFiltrees);
-            mettreFiltresEnMajuscule();
-            supprimerDoublonsFiltres();
-
-            // renderTable(donneesFiltrees);
         });
     });
 }

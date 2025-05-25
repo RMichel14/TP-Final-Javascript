@@ -28,6 +28,10 @@ function main() {
             donneesFiltrees = applyFilters(donneesMusees);
         });
     });
+
+    sortFilter.addEventListener("change", e => {
+        sortTable(donneesFiltrees);
+    });
 }
 
 main()

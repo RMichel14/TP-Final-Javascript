@@ -83,6 +83,8 @@ function mettreFiltresEnMajuscule() {
   const selects = document.querySelectorAll("select");
 
   selects.forEach(select => {
+    if (select == sortFilter)   return;
+
     for (let i = 0; i < select.options.length; i++) {
       const option = select.options[i];
 

@@ -5,7 +5,11 @@
  * @author Bastien POMMIER
  * @copyright ISEN-CAEN CIR1 - 2025
  */
-function sortTable(table, filter) {
+function sortTable(table) {
+    let filter = getSelectValue(sortFilter);
+    console.log(filter);
+    if (filter == "")   return;
+
     table.forEach((object, id) => {   // "object" n'est pas utile, on utilise juste l'index
         compareData(table, id, filter);
     });
@@ -68,7 +72,23 @@ function applyFilters(musees) {
         if (item[0].value != "")   musees = filterTable(musees, item[1], item[0].value);
     });
 
-    sortTable(musees, sortFilter.value);
+    sortTable(musees);
 
     return musees;
+}
+
+
+
+
+
+/**
+ * Trouve la valeur de l'option sélectionnée dans un sélecteur HTML
+ * @param {HTMLElement} select   Sélecteur dont chercher l'option
+ * @returns {String}   Retourne la valeur de l'option sélectionnée
+ * @author Bastien POMMIER
+ * @copyright ISEN-CAEN CIR1 - 2025
+ */
+function getSelectValue(select) {
+    let id = select.options.selectedIndex;
+    return select.options[id].value;
 }

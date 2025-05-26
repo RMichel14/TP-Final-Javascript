@@ -32,6 +32,13 @@ function sortTable(table) {
 function compareData(table, i, filter) {
     if (i == 0)   return;
 
+    if (isNaN(table[i][filter])) {
+        let temp = table[i];
+        table.splice(i, 1);
+        table.push(temp);
+        return;
+    }
+
     while (table[i][filter] < table[i-1][filter]) {   // Si l'élément est plus petit que le précédent...
         [table[i], table[i-1]]   =   [table[i-1], table[i]];   // ... on inverse les 2
 

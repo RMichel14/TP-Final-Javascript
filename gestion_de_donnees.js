@@ -1,5 +1,11 @@
 function main() {
     const donneesMusees = transformationDatabase(data);
-    renderTable(donneesMusees);
+    let donneesMuseesTrie = donneesMusees;
+    sortTable(donneesMuseesTrie, "annee");
+    remplirFiltresDynamique(donneesMuseesTrie);
+    mettreFiltresEnMajuscule();
+    supprimerDoublonsFiltres();
+    renderTable(donneesMuseesTrie);
 }
+
 main()

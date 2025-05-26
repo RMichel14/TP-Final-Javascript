@@ -32,6 +32,7 @@ function main() {
     sortFilter.addEventListener("change", e => {
         sortTable(donneesFiltrees);
     });
+    search(donneesMusees);
 }
 
 main();

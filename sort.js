@@ -8,7 +8,7 @@
 function sortTable(table) {
     let filter = getSelectValue(sortFilter);
     if (filter == "") {
-        renderTable(table);
+        afficherPage(1, table);
         return;
     }
 
@@ -16,7 +16,7 @@ function sortTable(table) {
         compareData(table, id, filter);
     });
 
-    renderTable(table);
+    afficherPage(1, table);
 }
 
 

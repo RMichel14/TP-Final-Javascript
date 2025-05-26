@@ -1,3 +1,10 @@
+/**
+ * Fait le tri dans les données en fonction des caractères entrés
+ * @param {Array} data,query Database du musée et chaine de caractères entrée
+ * @author Nawal BISIAUX
+ * @copyright ISEN-CAEN CIR1 - 2025
+ */
+
 function filterByQuery(data, query) {
     const lowerQuery = query.toLowerCase(); //convertit le texte en minuscules
 
@@ -6,6 +13,13 @@ function filterByQuery(data, query) {
         return typeof nom === "string" && nom.toLowerCase().includes(lowerQuery);
     });
 }
+
+/**
+ * Gere ce qu'il se passe quand l'utilisateur ecrit dans la barre de recherche
+ * @param {Array} donneesMusees Recupere les données des musées
+ * @author Nawal BISIAUX
+ * @copyright ISEN-CAEN CIR1 - 2025
+ */
 
 function search(donneesMusees) {
     searchInput.addEventListener("input", () => { //a chaque saisie on recupere ce qui est tapé, on filtre le tableau et on affiche

@@ -11,6 +11,7 @@ function search(donneesMusees) {
     searchInput.addEventListener("input", () => { //a chaque saisie on recupere ce qui est tapé, on filtre le tableau et on affiche
         const query = searchInput.value;//on recupere ce qu'a ecrit l'user dans la barre de recherche 
         const filteredData = filterByQuery(donneesMusees, query); // on prend en paramètres le tableau contenant les donnees du musée et ce qu'à écrit l'user pour retourner le tableau modifié
-        renderTable(filteredData);
+        const applyFilter = applyFilters(filteredData);
+        afficherPage(1, applyFilter);
     });
 }

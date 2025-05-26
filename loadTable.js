@@ -1,5 +1,10 @@
+// Necessaire a la pagination
 const paginationContainer = document.getElementById("pagination");
 
+let pageActuelle = 1;
+let resultatsParPage = 20;
+
+// -----------------------------------------------------------------
 
 /**
  * Function for utilisation of database
@@ -33,45 +38,45 @@ function transformationDatabase(donneesBrutes) {
  * @copyright ISEN-CAEN CIR1 - 2025
  */
 function remplirFiltresDynamique(musees) {
-  const champsFiltres = {
-    region: "regionFilter",
-    ville: "villeFilter",
-    departement: "departementFilter",
-    annee: "anneeFilter",
-    dateAppellation: "dateAppellationFilter",
-    note: "noteFilter",
-  };
+    const champsFiltres = {
+        region: "regionFilter",
+        ville: "villeFilter",
+        departement: "departementFilter",
+        annee: "anneeFilter",
+        dateAppellation: "dateAppellationFilter",
+        note: "noteFilter",
+    };
 
-  // Pour chaque champ, extraire les valeurs uniques
-  for (const champ in champsFiltres) {
-    const select = document.getElementById(champsFiltres[champ]);
-    if (!select) continue;
+    // Pour chaque champ, extraire les valeurs uniques
+    for (const champ in champsFiltres) {
+        const select = document.getElementById(champsFiltres[champ]);
+        if (!select) continue;
 
-    const valeursUniques = new Set();
+        const valeursUniques = new Set();
 
-    musees.forEach(m => {
-      const val = m[champ];
-      if (val !== undefined && val !== null && val !== "") {
-        valeursUniques.add(val);
-      }
-    });
+        musees.forEach(m => {
+            const val = m[champ];
+            if (val !== undefined && val !== null && val !== "") {
+                valeursUniques.add(val);
+            }
+        });
 
-    // Nettoyer les options existantes (sauf la premiere "placeholder")
-    select.options.length = 1;
+        // Nettoyer les options existantes (sauf la premiere "placeholder")
+        select.options.length = 1;
 
-    // Ajouter les options triees
-    Array.from(valeursUniques)
-      .sort((a, b) => {
-        if (typeof a === "number" && typeof b === "number") return a - b;
-        return String(a).localeCompare(String(b));
-      })
-      .forEach(val => {
-        const option = document.createElement("option");
-        option.value = val;
-        option.textContent = val;
-        select.appendChild(option);
-      });
-  }
+        // Ajouter les options triees
+        Array.from(valeursUniques)
+            .sort((a, b) => {
+                if (typeof a === "number" && typeof b === "number") return a - b;
+                return String(a).localeCompare(String(b));
+            })
+            .forEach(val => {
+                const option = document.createElement("option");
+                option.value = val;
+                option.textContent = val;
+                select.appendChild(option);
+            });
+    }
 }
 
 /**
@@ -80,20 +85,20 @@ function remplirFiltresDynamique(musees) {
  * @copyright ISEN-CAEN CIR1 - 2025
  */
 function mettreFiltresEnMajuscule() {
-  const selects = document.querySelectorAll("select");
+    const selects = document.querySelectorAll("select");
 
-  selects.forEach(select => {
-    if (select == sortFilter)   return; // On ne modifie pas les valeurs du trieur (select#sortBy)
-    for (let i = 0; i < select.options.length; i++) {
-      const option = select.options[i];
+    selects.forEach(select => {
+        if (select == sortFilter) return; // On ne modifie pas les valeurs du trieur (select#sortBy)
+        for (let i = 0; i < select.options.length; i++) {
+            const option = select.options[i];
 
-      // Ne transforme pas la premiere option vide ou placeholder
-      if (option.value.trim() === "" || option.textContent.trim() === "") continue;
+            // Ne transforme pas la premiere option vide ou placeholder
+            if (option.value.trim() === "" || option.textContent.trim() === "") continue;
 
-      option.textContent = option.textContent.toUpperCase();
-      option.value = option.value.toUpperCase();
-    }
-  });
+            option.textContent = option.textContent.toUpperCase();
+            option.value = option.value.toUpperCase();
+        }
+    });
 }
 
 /**
@@ -102,32 +107,32 @@ function mettreFiltresEnMajuscule() {
  * @copyright ISEN-CAEN CIR1 - 2025
  */
 function supprimerDoublonsFiltres() {
-  const selects = document.querySelectorAll("select");
+    const selects = document.querySelectorAll("select");
 
-  selects.forEach(select => {
-    const valeursVues = new Set();
-    const optionsAAConserver = [];
+    selects.forEach(select => {
+        const valeursVues = new Set();
+        const optionsAAConserver = [];
 
-    for (let i = 0; i < select.options.length; i++) {
-      const option = select.options[i];
-      const val = option.value.trim();
+        for (let i = 0; i < select.options.length; i++) {
+            const option = select.options[i];
+            const val = option.value.trim();
 
-      // Toujours conserver la premiere option vide (placeholder)
-      if (i === 0 && val === "") {
-        optionsAAConserver.push(option);
-        continue;
-      }
+            // Toujours conserver la premiere option vide (placeholder)
+            if (i === 0 && val === "") {
+                optionsAAConserver.push(option);
+                continue;
+            }
 
-      if (!valeursVues.has(val)) {
-        valeursVues.add(val);
-        optionsAAConserver.push(option);
-      }
-    }
+            if (!valeursVues.has(val)) {
+                valeursVues.add(val);
+                optionsAAConserver.push(option);
+            }
+        }
 
-    // Nettoyer le <select> et reinserer uniquement les options uniques
-    select.innerHTML = "";
-    optionsAAConserver.forEach(opt => select.appendChild(opt));
-  });
+        // Nettoyer le <select> et reinserer uniquement les options uniques
+        select.innerHTML = "";
+        optionsAAConserver.forEach(opt => select.appendChild(opt));
+    });
 }
 
 /**
@@ -136,7 +141,6 @@ function supprimerDoublonsFiltres() {
  * @author Raphaël MICHEL
  * @copyright ISEN-CAEN CIR1 - 2025
  */
-
 function renderTable(data) {
     const tableBody = document.getElementById("museeTable");
     tableBody.innerHTML = '';
@@ -176,4 +180,20 @@ function renderTable(data) {
             tableBody.appendChild(row);
         });
     }
+}
+
+/**
+ * Function for loading table of Musee in HTML.
+ * @param {Number} page Numero de la page
+ * @param {Array} donneesMusees Tableau des donnees des musees
+ * @author Raphaël MICHEL
+ * @copyright ISEN-CAEN CIR1 - 2025
+ */
+function afficherPage(page, donneesMusees) {
+    const debut = (page - 1) * resultatsParPage;
+    const fin = debut + resultatsParPage;
+    const museesPage = donneesMusees.slice(debut, fin);
+
+    renderTable(museesPage);
+    pageActuelle = page;
 }

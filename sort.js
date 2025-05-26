@@ -15,7 +15,7 @@ function sortTable(table) {
     table.forEach((object, id) => {   // "object" n'est pas utile, on utilise juste l'index
         compareData(table, id, filter);
     });
-
+  
     afficherPage(1, table);
 }
 

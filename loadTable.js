@@ -141,6 +141,7 @@ function supprimerDoublonsFiltres() {
  * @author Raphaël MICHEL
  * @copyright ISEN-CAEN CIR1 - 2025
  */
+
 function renderTable(data) {
     const tableBody = document.getElementById("museeTable");
     tableBody.innerHTML = '';

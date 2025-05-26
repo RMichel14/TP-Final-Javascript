@@ -3,7 +3,7 @@ function filterByQuery(data, query) {
 
     return data.filter(item => {//on verifie que nom est bien un char puis on le convertit en minuscules
         const nom = item.nom;
-        return typeof nom === "string" && nom.toLowerCase().startsWith(lowerQuery);
+        return typeof nom === "string" && nom.toLowerCase().includes(lowerQuery);
     });
 }
 

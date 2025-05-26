@@ -19,7 +19,7 @@ function main() {
     mettreFiltresEnMajuscule();
     supprimerDoublonsFiltres();
 
-    // renderTable(donneesFiltrees);
+    renderTable(donneesFiltrees);
 
     
 

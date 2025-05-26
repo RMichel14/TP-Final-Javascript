@@ -7,7 +7,10 @@
  */
 function sortTable(table) {
     let filter = getSelectValue(sortFilter);
-    if (filter == "")   return;
+    if (filter == "") {
+        renderTable(table);
+        return;
+    }
 
     table.forEach((object, id) => {   // "object" n'est pas utile, on utilise juste l'index
         compareData(table, id, filter);

@@ -1,24 +1,12 @@
-const filters = {
-    search: document.getElementById("searchInput"),
-    region: document.getElementById("regionFilter"),
-    ville: document.getElementById("villeFilter"),
-    departement: document.getElementById("departementFilter"),
-    tarif: document.getElementById("payantFilter"),
-    sortBy: document.getElementById("sortBy"),
-    annee: document.getElementById("anneeFilter"),
-    dateAppellation: document.getElementById("dateAppellationFilter"),
-    note: document.getElementById("noteFilter"),
-};
-
 const paginationContainer = document.getElementById("pagination");
 
 
 /**
  * Function for utilisation of database
- * @param donneesBrutes Database of Museum
- * @return map
+ * @param {Array} donneesBrutes Database of Museum
+ * @return {Array} map
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function transformationDatabase(donneesBrutes) {
     return donneesBrutes.map(item => ({
@@ -42,7 +30,7 @@ function transformationDatabase(donneesBrutes) {
  * Fonction permettant de remplir les filtres HTML dynamiquement (balise "select")
  * @param {Array} musees Donnees des musees
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function remplirFiltresDynamique(musees) {
   const champsFiltres = {
@@ -89,12 +77,13 @@ function remplirFiltresDynamique(musees) {
 /**
  * Fonction permettant de mettre les filtres HTML (balise "select") en majuscule
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function mettreFiltresEnMajuscule() {
   const selects = document.querySelectorAll("select");
 
   selects.forEach(select => {
+    if (select == sortFilter)   return; // On ne modifie pas les valeurs du trieur (select#sortBy)
     for (let i = 0; i < select.options.length; i++) {
       const option = select.options[i];
 
@@ -110,7 +99,7 @@ function mettreFiltresEnMajuscule() {
 /**
  * Fonction pour supprimer les doublons parmi les filtres HTML (balise "select")
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function supprimerDoublonsFiltres() {
   const selects = document.querySelectorAll("select");
@@ -143,9 +132,9 @@ function supprimerDoublonsFiltres() {
 
 /**
  * Function for loading table of Musee in HTML.
- * @param data Database of museum
+ * @param {Array} data Database of museum
  * @author Raphaël MICHEL
- * @copyright ISEN CIR1
+ * @copyright ISEN-CAEN CIR1 - 2025
  */
 function renderTable(data) {
     const tableBody = document.getElementById("museeTable");

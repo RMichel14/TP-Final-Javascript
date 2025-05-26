@@ -1,11 +1,37 @@
+const filters = [
+    [document.getElementById("regionFilter"),   "region"],
+    [document.getElementById("villeFilter"),   "ville"],
+    [document.getElementById("departementFilter"),   "departement"],
+    [document.getElementById("anneeFilter"),   "annee"],
+    [document.getElementById("dateAppellationFilter"),   "dateAppellation"],
+    [document.getElementById("noteFilter"),   "note"],
+];
+
+const sortFilter = document.getElementById("sortBy");
+
+
+
 function main() {
     const donneesMusees = transformationDatabase(data);
-    let donneesMuseesTrie = donneesMusees;
-    sortTable(donneesMuseesTrie, "annee");
-    remplirFiltresDynamique(donneesMuseesTrie);
+    let donneesFiltrees = donneesMusees;
+
+    remplirFiltresDynamique(donneesFiltrees);
     mettreFiltresEnMajuscule();
     supprimerDoublonsFiltres();
-    renderTable(donneesMuseesTrie);
+
+    renderTable(donneesFiltrees);
+
+    
+
+    filters.forEach(item => {
+        item[0].addEventListener("change", e => {
+            donneesFiltrees = applyFilters(donneesMusees);
+        });
+    });
+
+    sortFilter.addEventListener("change", e => {
+        sortTable(donneesFiltrees);
+    });
 }
 
 main()

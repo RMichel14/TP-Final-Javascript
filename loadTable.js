@@ -143,7 +143,7 @@ function renderTable(data) {
 
     // Si les donnees sont vides
     if (data.length == 0)
-        tableBody.innerHTML = `<tr><td colspan="11">Aucun musee trouve.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="11">Aucun musée trouvé.</td></tr>`;
     else {
         data.forEach(element => {
             const row = document.createElement("tr");

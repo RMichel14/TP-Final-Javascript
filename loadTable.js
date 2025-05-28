@@ -156,13 +156,13 @@ function renderTable(data) {
             let total = element.total;
             let note = element.note;
 
-            // Si la note est renseignée, vider les NaN
-            if (note !== "" && note !== null && note !== undefined) {
+            // vider les NaN
+            
                 if (isNaN(annee)) annee = "";
                 if (isNaN(payant)) payant = "";
                 if (isNaN(gratuit)) gratuit = "";
                 if (isNaN(total)) total = "";
-            }
+            
 
             const row = document.createElement("tr");
             row.innerHTML = `
